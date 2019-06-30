@@ -1,0 +1,118 @@
+<ion-content no-padding >
+  
+  <div class="top-section-with-profile">
+    <h2>
+        Google Books Search Engine
+    </h2>
+
+    <ion-grid>
+        <ion-row>
+          <ion-col col-1></ion-col>
+          <ion-col col-9>
+            <ion-input type="text" [(ngModel)]="searchTerms" placeholder="Input search term here" style="background-color: white;"></ion-input>
+          </ion-col>
+          <ion-col col-1 no-padding>
+            <button ion-button block icon-only (click)="findBooks()">             
+              <ion-icon name="search"></ion-icon> 
+            </button>
+          </ion-col>
+          <ion-col col-1></ion-col>
+        </ion-row>       
+    </ion-grid>
+  </div> 
+
+  <hr>
+
+  <div *ngIf="!displayBook">
+      <h2>
+        <button ion-button block (click)="goBack()">THERE IS AN ERROR, Please try again later.</button>
+      </h2>   
+  </div>
+
+  <p id="results"></p>
+
+  <div *ngIf="displayBook">
+      <ion-grid>
+          <ion-row>
+            <ion-col col-1></ion-col>
+            <ion-col col-3>
+              <div>     
+                  <ion-row>
+                      <ion-col>
+                        <button ion-button icon-start clear small>
+                          <ion-icon name="book"></ion-icon>
+                          <div>{{ totalItems }} results found</div>
+                        </button>
+                      </ion-col>
+            
+                      <ion-col>            
+                      </ion-col>       
+                  </ion-row>       
+              </div>
+            </ion-col>
+            <ion-col col-4>
+                <ion-list>
+                    <ion-item>
+                      <ion-label style="color: dodgerblue;">Used Terms</ion-label>
+                      <ion-select [(ngModel)]="usedTerms">
+                          <div *ngFor="let item of allSearchTerms">         
+                              <ion-option value="{{ item.term }}">{{ item.term }}</ion-option>                                                       
+                          </div>                  
+                      </ion-select>
+                    </ion-item>
+                </ion-list>         
+            </ion-col>
+            <ion-col col-4>
+              <ion-row>
+                  <div>
+                      <button ion-button color="secondary" icon-only (click)="oldTerm()"><ion-icon name="search"></ion-icon></button>
+                  </div>
+                  <button ion-button (click)="deleteTerms()">Delete all used terms</button>
+              </ion-row>
+            </ion-col>
+          </ion-row>       
+      </ion-grid>
+
+      <ion-grid>
+          <ion-row>
+            <ion-col col-1></ion-col>
+            <ion-col col-10>
+                <div>
+                    <ion-list>
+                      <ion-card ion-item style="padding-bottom: 5px;" *ngFor="let item of items">
+                        <ion-card-content (click)="getBookDetail( item.id )">
+                          <ion-row>
+                            <ion-col col-3>
+                              <div *ngIf="item.volumeInfo?.imageLinks?.thumbnail">
+                                  <ion-thumbnail item-start>
+                                      <img src="{{ item.volumeInfo?.imageLinks?.thumbnail }}" style="min-height: 150px; min-width: 120px; padding-right: 15px;">                                
+                                  </ion-thumbnail>
+                              </div>
+                              <div align-self-center text-center *ngIf="!item.volumeInfo?.imageLinks?.thumbnail">
+                                  Cover image <br>is NOT <br>available
+                              </div>
+                                
+                            </ion-col>
+            
+                            <ion-col col-9>
+                              <h2>Title: {{ item.volumeInfo.title }}</h2>
+                              <p>Subtitle: {{ item.volumeInfo.subtitle }} </p>
+                              <p>Authors: {{ item.volumeInfo.authors }}</p>
+                              <p>Publisher: {{ item.volumeInfo.publisher }}</p>
+                              <p>Page Count: {{ item.volumeInfo.pageCount }} pages</p>
+                            </ion-col>
+            
+                          </ion-row>
+            
+                        </ion-card-content>
+                      </ion-card>
+                    </ion-list>
+                </div>
+            </ion-col>       
+           <ion-col col-1></ion-col>
+          </ion-row>       
+      </ion-grid>
+
+  </div>
+    
+</ion-content>

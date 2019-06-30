@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Book Info - details</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div *ngIf="!displayBook">
+    <h2>
+      <button ion-button block (click)="goBack()">THERE IS AN ERROR, Please try again later.</button>
+    </h2>   
+  </div>
+
+  <p id="result-book"></p>
+
+  <div *ngIf="displayBook">
+
+      <button ion-button block (click)="goBack()">Back to search results</button>
+
+      <ion-grid>
+          <ion-row>
+            <ion-col col-1></ion-col>
+            <ion-col col-10>
+                <div>
+                    <ion-list>
+                      <ion-card ion-item>
+                        <ion-card-content>
+                          <ion-row>
+                            <ion-col col-3>
+                              <div *ngIf="item?.imageLinks?.thumbnail">
+                                  <ion-thumbnail item-start>
+                                      <img src="{{ item?.imageLinks?.thumbnail }}" style="min-height: 150px; min-width: 120px; padding-right: 15px;">                                
+                                  </ion-thumbnail>
+                              </div>
+                              <div align-self-center text-center *ngIf="!item?.imageLinks?.thumbnail">
+                                  Cover image <br>is NOT <br>available
+                              </div>
+                                
+                            </ion-col>
+            
+                            <ion-col col-7>
+                              <h2>Title: {{ item?.title }}</h2>
+                              <p>Subtitle: {{ item?.subtitle }} </p>
+                              <p>Authors: {{ item?.authors }}</p>
+                              <p>Publisher: {{ item?.publisher }}</p>
+                              <p>Page Count: {{ item?.pageCount }} pages</p>
+                              <p>Average Rating: {{ item?.averageRating }}</p>
+                              <p>Print Type: {{ item?.printType }} </p>
+                              <p>Published Date: {{ item?.publishedDate }}</p>
+                              <div *ngIf="item?.industryIdentifiers[0].length>=1">
+                                  <p>ISBN-10: {{ item?.industryIdentifiers[0].identifier }}</p>
+                              </div>     
+                              <p>Categories: {{ item?.categories }}</p>
+                              
+                            </ion-col>
+            
+                          </ion-row>
+            
+                        </ion-card-content>
+                      </ion-card>
+                    </ion-list>
+                </div>
+            </ion-col>       
+           <ion-col col-1></ion-col>
+          </ion-row>       
+      </ion-grid>
+  </div>
+
+</ion-content>

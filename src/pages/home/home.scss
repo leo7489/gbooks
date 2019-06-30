@@ -1,0 +1,26 @@
+page-home {
+    
+.top-section-with-profile {	
+	position: relative;
+	background-image: url("../../assets/imgs/banner.png");
+	background-size: auto;
+	background-position: center bottom;
+	text-align: center;
+    color: dodgerblue;
+	padding: 0px 0px 0px 0px;
+}
+
+.bg {
+  /* The image used */
+  background-image: url("../../assets/imgs/banner.png");
+
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+}
