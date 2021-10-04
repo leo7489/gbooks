@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  apiKey: string = 'USE_YOUR_API_KEY************';
+  apiKey: string = 'YOUR_API_KEY';
   searchTerms: string = '';
   totalItems: number = 0;
   items: any = [];
