@@ -20,7 +20,9 @@ export class BookDetailPage {
     this.searchForBooks(bookID);    
   }
 
-  ngOnDestroy()
+  ngOnDestroy(){
+  
+  }
   
   // Renders an error message
   showError(msg: string) {
