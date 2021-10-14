@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Rx';
   templateUrl: 'book-detail.html',
 })
 export class BookDetailPage {
-  apiKey: string = 'AIzaSyDaibtGoJndaZ1uj2-j0Ekrw0Gjy9PboR0';
+  apiKey: string = 'YOUR_API_KEY';
   item: any;
   status: number;
   displayBook: boolean = true;
