@@ -23,6 +23,10 @@ export class HomePage {
   constructor(public navCtrl: NavController, private http: HttpClient) {
 
   }
+  
+  ngOnDestroy(){
+  
+  }
 
   // Renders an error message
   showError(msg: string) {
