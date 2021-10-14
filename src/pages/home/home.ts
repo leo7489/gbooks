@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { NavController, Config } from 'ionic-angular';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { BookDetailPage } from '../book-detail/book-detail';
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage implements OnDestroy{
   apiKey: string = 'YOUR_API_KEY';
   searchTerms: string = '';
   totalItems: number = 0;
