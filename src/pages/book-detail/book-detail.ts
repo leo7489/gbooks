@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { IonicPage, NavController, NavParams, Config } from 'ionic-angular';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Rx';
   selector: 'page-book-detail',
   templateUrl: 'book-detail.html',
 })
-export class BookDetailPage {
+export class BookDetailPage implements OnDestroy{
   apiKey: string = 'YOUR_API_KEY';
   item: any;
   status: number;
